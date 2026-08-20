@@ -1,0 +1,107 @@
+      ABE
+2012C
+Introduction to Biological Engineering
+Introduces the process of design along with approaches to solving
+engineering problems, manipulations and presentations of engineering
+data and applied engineering concepts. (WR)
+Prereq: MAC 2311.
+Class #10053
+M,W |
+Period 4
+10:40 AM
+11:30 AM
+ROG 0129
+M |
+Period 8
+3:00 PM
+3:50 PM
+ROG 0211
+Additional Details
+EEP Eligible
+Employee Education Program
+Writing: 2000 Words
+Instructor
+Ana Martin-Ryals
+Meet
+Primarily Classroom
+Primarily On-Campus Class
+Credits
+3
+Department
+Agricultural and Biological Engineering
+Final Exam
+12/8/2026
+3:00 PM
+5:00 PM
+Class Dates
+08/20/2026
+12/02/2026
+Class #10054
+M,W |
+Period 4
+10:40 AM
+11:30 AM
+ROG 0129
+M |
+Period 9
+4:05 PM
+4:55 PM
+ROG 0211
+Additional Details
+EEP Eligible
+Employee Education Program
+Writing: 2000 Words
+Instructor
+Ana Martin-Ryals
+Meet
+Primarily Classroom
+Primarily On-Campus Class
+Credits
+3
+Department
+Agricultural and Biological Engineering
+Final Exam
+12/8/2026
+3:00 PM
+5:00 PM
+Class Dates
+08/20/2026
+12/02/2026
+      ABE
+3612C
+Heat and Mass Transfer in Biological Systems
+Transport phenomena, steady and unsteady-state heat conduction,
+radiation, free and forced convection, mass transfer, psychometrics and
+thermodynamics of biological processes.
+Coreq: ENV 3040C or CGN 3421 or ESI 4327C or (COP 2271 and COP 2271L).
+Class #10055
+M,W,F |
+Period 5
+11:45 AM
+12:35 PM
+ROG 0122
+R |
+Periods 7-9
+1:55 PM
+4:55 PM
+ROG 0129
+Additional Details
+EEP Eligible
+Employee Education Program
+Instructor
+William Pelletier
+Meet
+Primarily Classroom
+Primarily On-Campus Class
+Credits
+4
+Department
+Agricultural and Biological Engineering
+Final Exam
+12/9/2026
+3:00 PM
+5:00 PM
+Class Dates
+08/20/2026
+12/02/2026
+      ABE

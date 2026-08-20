@@ -1,0 +1,48 @@
+#!/bin/bash
+set -euo pipefail
+
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <input_file>" >&2
+    exit 1
+fi
+
+if [ ! -f "$1" ]; then
+    echo "Error: input file '$1' not found" >&2
+    exit 1
+fi
+
+# --- Filter pipeline ---
+# Each stage reads from the previous stage's stdout and writes to the next
+# stage's stdin, so no intermediate files are created except where noted.
+
+
+#removes adjacent duplicate lines
+uniq "$1" |
+
+#flatten class dates into two lines
+ sed -E -e 's/^([0-9]+\/[0-9]+\/[0-9]+) - ([0-9]+\/[0-9]+\/[0-9]+)$/\1\n\2\n/' |
+
+#formats time into 3 lines and removes parenthesis
+sed -E -e 's/^([0-9]+\/[0-9]+\/[0-9]+) @ ([0-9]+:[0-9]+ [AP]M) - ([0-9]+:[0-9]+ [AP]M)$/\1\n\2\n\3/' \
+         -e 's/^\(([0-9:]+ [AP]M) - ([0-9:]+ [AP]M)\)$/\1\n\2/' |
+
+#removes "launch <url>" links
+sed -E ':a; /launch </ { /launch <[^>]*>/!{N;ba} }; s/[[:space:]]*launch <[^>]*>/\n/g' |
+
+#Drop standalone heading/label lines
+sed -E '/^(Course Materials|Syllabus|Textbooks?)$/d' |
+
+# Keep the "Class #" line but delete the 3 boilerplate lines after it
+sed -E '/Class #/{n;N;N;d}' |
+
+# Outputs legible file
+tee clearRead.txt |
+
+# Format Course code line into 3 lines and preserves indent
+sed -E 's/^([ \t]*)([A-Za-z]+)([0-9]+[A-Za-z]*) - (.*)$/\1\2\n\3\n\4/' |
+
+# Remove blank/whitespace-only lines
+sed -E '/^[[:space:]]*$/d' \
+> machineRead.txt
+
+echo "Done. readable output: clearRead.txt | Final output: machineRead.txt"

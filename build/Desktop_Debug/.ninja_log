@@ -1,0 +1,8 @@
+# ninja log v7
+1	365	1786923513960501278	CMakeFiles/CourseParser.dir/main.cpp.o	de8ed92bf53e5556
+365	405	1786923514324512303	CourseParser	82346b66cc703daa
+1	463	1786922749980402623	CMakeFiles/CourseParser.dir/course.cpp.o	37f268f3f0c863ad
+1	3	1786477636507019782	clean	7adf74806070bde8
+1	418	1787251515939442629	CMakeFiles/CourseParser.dir/main.cpp.o	de8ed92bf53e5556
+1	476	1787251515940820482	CMakeFiles/CourseParser.dir/course.cpp.o	37f268f3f0c863ad
+476	521	1787251516414458187	CourseParser	82346b66cc703daa
