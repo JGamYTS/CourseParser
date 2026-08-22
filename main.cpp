@@ -15,6 +15,7 @@ void printHelp(std::string progName){
     "  " << progName << " [OPTIONS] <query>\n"
     "OPTIONS:\n"
     "  --course                      Search for a course using course code\n"
+    "  --dep                         List all courses with the same prefix\n"
     "  --name                        Search for a course using course name\n"
     "  --recursive N                 Use alongside previous flags to recursively print N layers of pre-requisites"
     "  --prereq                      Search for courses that require the given course code as a pre-requisite)\n"
@@ -31,7 +32,8 @@ void notEnoughArguments(){
 
 int main (int argc, char *argv[]) {
   vector<Course> courseList = loadCoursesFromFile("machineRead.txt");
-  std::regex pattern(R"([A-Z]{3}[0-9]{4}[A-Za-z]?)");
+  std::regex coursePattern(R"([A-Z]{3}[0-9]{4}[A-Za-z]?)");
+  std::regex depPattern(R"([A-Z]{3})");
 
   if (argc == 1){
       printHelp(argv[0]);
@@ -46,8 +48,10 @@ int main (int argc, char *argv[]) {
 
   if(!choice.compare("--course")){
       string searchQuery(argv[2]);
-      if(!regex_search(searchQuery, pattern))
+      if(!regex_search(searchQuery, coursePattern)){
         cout << "Invalid course code.\n";
+        return 1;
+      }
       for(Course c : courseList){
           if(!c.getCourseCode().compare(searchQuery.substr(0,3)))
             if(c.getCourseNumber().find(searchQuery.substr(3)) != string::npos)
@@ -67,6 +71,17 @@ int main (int argc, char *argv[]) {
 
       for(Course c : courseList){
           if(c.getPrereq().find(searchQuery) != string::npos)
+            c.print();
+        }
+    }
+  else if(!choice.compare("--dep")){
+      string searchQuery(argv[2]);
+      if(!regex_search(searchQuery, depPattern)){
+          cout << "Invalid course prefix.\n";
+          return 1;
+        }
+      for(Course c : courseList){
+          if(!c.getCourseCode().compare(searchQuery))
             c.print();
         }
     }
