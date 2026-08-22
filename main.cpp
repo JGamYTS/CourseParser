@@ -42,23 +42,26 @@ int main (int argc, char *argv[]) {
   if(!choice.compare("--course")){
       string searchQuery(argv[2]);
       for(Course c : courseList){
-          if(c.getCourseCode().compare(searchQuery))
+          if(!c.getCourseCode().compare(searchQuery))
             c.print();
         }
     }
-  if(!choice.compare("--name")){
+  else if(!choice.compare("--name")){
       string searchQuery(argv[2]);
       for(Course c : courseList){
-          if(c.getTitle().compare(searchQuery))
+          if(c.getTitle().find(searchQuery) != string::npos)
             c.print();
         }
     }
-  if(!choice.compare("--prereq")){
+  else if(!choice.compare("--prereq")){
       string searchQuery(argv[2]);
       for(Course c : courseList){
           if(c.getPrereq().find(searchQuery) != string::npos)
             c.print();
         }
+    }
+  else{
+      cout << "Unknown command.\n";
     }
   return 0;
 }
