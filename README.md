@@ -12,4 +12,4 @@ Allow for searching by professors
 
 Add recursive search to display a course and the full course listings of its pre-reqs
 
-Change the storage of pre-reqs to a directed graph (delaying because of non-standard pre-req fields and non-class based pre-reqs)
+Change the storage of courses to a directed graph (delaying because of non-standard pre-req fields and non-class based pre-reqs)
