@@ -6,21 +6,59 @@
 
 using namespace std;
 
-int
-main ()
-{
-  vector<Course> Temp = loadCoursesFromFile("Undergrad.txt");
-  while(true){
-    string search = "";
-    cin >> search;
-    search.insert(3, " ");
-    cout << "Courses which require " << search << ":\n\n";
-    for(auto course : Temp){
-        if(course.getPrereq().find(search) != string::npos)
-          course.print();
+void printHelp(std::string progName){
+  cout <<
+    "catalogue-search 1.0" << "\n"
+    "Search the UF catalogue from the command line.\n\n"
+    "USAGE:\n"
+    "  " << progName << " [OPTIONS] <query>\n"
+    "OPTIONS:\n"
+    "  --course                      Search for a course using course code\n"
+    "  --name                        Search for a course using course name\n"
+    "  --recursive N                 Use alongside previous flags to recursively print N layers of pre-requisites"
+    "  --prereq                      Search for courses that require the given course code as a pre-requisite)\n"
+    "EXAMPLES:\n"
+    "  " << progName << " --course EEL3111C\n"
+    "  " << progName << " --recursive 4 --course EEL4745C\n"
+    "  " << progName << " --name \"Heat and Mass Transfer\"\n"
+    "  " << progName << " --prereq PHY2048\n";
+}
 
-      }
-    search = "";
+void notEnoughArguments(){
+  cout << "Please insert enough arguments\n";
+}
+
+int main (int argc, char *argv[]) {
+  vector<Course> courseList = loadCoursesFromFile("machineRead.txt");
+  if (argc == 1){
+      printHelp(argv[0]);
+      return 1;
+    }
+  else if(argc < 3){
+      notEnoughArguments();
+      return 1;
+  }
+  string choice(argv[1]);
+  if(!choice.compare("--course")){
+      string searchQuery(argv[2]);
+      for(Course c : courseList){
+          if(c.getCourseCode().compare(searchQuery))
+            c.print();
+        }
+    }
+  if(!choice.compare("--name")){
+      string searchQuery(argv[2]);
+      for(Course c : courseList){
+          if(c.getTitle().compare(searchQuery))
+            c.print();
+        }
+    }
+  if(!choice.compare("--prereq")){
+      string searchQuery(argv[2]);
+      for(Course c : courseList){
+          if(c.getPrereq().find(searchQuery) != string::npos)
+            c.print();
+        }
     }
   return 0;
 }

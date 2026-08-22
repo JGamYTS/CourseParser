@@ -41,6 +41,9 @@ tee clearRead.txt |
 # Format Course code line into 3 lines and preserves indent
 sed -E 's/^([ \t]*)([A-Za-z]+)([0-9]+[A-Za-z]*) - (.*)$/\1\2\n\3\n\4/' |
 
+# Removes spaces in pre-req course codes
+sed -E 's/([A-Z]{3}) ([0-9]{4}[A-Za-z]?)/\1\2/g' |
+
 # Remove blank/whitespace-only lines
 sed -E '/^[[:space:]]*$/d' \
 > machineRead.txt
