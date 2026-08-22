@@ -1,7 +1,0 @@
-/home/jam/CourseParser/build/Desktop_Debug/CMakeFiles/CourseParser.dir
-/home/jam/CourseParser/build/Desktop_Debug/CMakeFiles/edit_cache.dir
-/home/jam/CourseParser/build/Desktop_Debug/CMakeFiles/rebuild_cache.dir
-/home/jam/CourseParser/build/Desktop_Debug/CMakeFiles/list_install_components.dir
-/home/jam/CourseParser/build/Desktop_Debug/CMakeFiles/install.dir
-/home/jam/CourseParser/build/Desktop_Debug/CMakeFiles/install/local.dir
-/home/jam/CourseParser/build/Desktop_Debug/CMakeFiles/install/strip.dir
