@@ -96,6 +96,7 @@
 
            // --- Accessors ---
     const std::string& getCourseCode() const { return courseCode_; }
+    const std::string& getCourseNumber() const { return courseNumber_; }
     const std::string& getTitle() const { return title_; }
     const std::string& getDescription() const { return description_; }
     const std::string& getPrereq() const { return prereq_; }

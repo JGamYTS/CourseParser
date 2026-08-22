@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include "course.h"
+#include <regex>
 
 using namespace std;
 
@@ -30,6 +31,8 @@ void notEnoughArguments(){
 
 int main (int argc, char *argv[]) {
   vector<Course> courseList = loadCoursesFromFile("machineRead.txt");
+  std::regex pattern(R"([A-Z]{3}[0-9]{4}[A-Za-z]?)");
+
   if (argc == 1){
       printHelp(argv[0]);
       return 1;
@@ -38,16 +41,22 @@ int main (int argc, char *argv[]) {
       notEnoughArguments();
       return 1;
   }
+
   string choice(argv[1]);
+
   if(!choice.compare("--course")){
       string searchQuery(argv[2]);
+      if(!regex_search(searchQuery, pattern))
+        cout << "Invalid course code.\n";
       for(Course c : courseList){
-          if(!c.getCourseCode().compare(searchQuery))
-            c.print();
+          if(!c.getCourseCode().compare(searchQuery.substr(0,3)))
+            if(c.getCourseNumber().find(searchQuery.substr(3)) != string::npos)
+              c.print();
         }
     }
   else if(!choice.compare("--name")){
       string searchQuery(argv[2]);
+
       for(Course c : courseList){
           if(c.getTitle().find(searchQuery) != string::npos)
             c.print();
@@ -55,6 +64,7 @@ int main (int argc, char *argv[]) {
     }
   else if(!choice.compare("--prereq")){
       string searchQuery(argv[2]);
+
       for(Course c : courseList){
           if(c.getPrereq().find(searchQuery) != string::npos)
             c.print();
