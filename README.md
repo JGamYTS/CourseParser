@@ -8,7 +8,7 @@ CourseFileFilter is a shell script to format Undergrad.txt into machineRead.txt 
 
 TODO:
 
-Allow for regular searching by course codes, course names, professors
+Allow for searching by professors
 
 Add recursive search to display a course and the full course listings of its pre-reqs
 
